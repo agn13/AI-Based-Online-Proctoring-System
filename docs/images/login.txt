@@ -1,0 +1,9 @@
+# Login Page Screenshot
+This file should contain a screenshot of the login page showing:
+- Username and password fields
+- Role selection (Student/Admin)
+- Login and Register buttons
+- Clean, professional UI with the system logo
+
+Placeholder - Replace with actual screenshot (login.png)</content>
+<parameter name="filePath">c:\Users\agnir\OneDrive\Desktop\Placement Oriented\AI-Based-Online-Proctoring-System\docs\images\login.txt

@@ -1,0 +1,10 @@
+# Exam Screen Screenshot
+This file should contain a screenshot of the exam interface showing:
+- Exam questions and multiple choice options
+- Webcam feed in corner
+- Timer counting down
+- Submit button
+- Clean layout optimized for testing
+
+Placeholder - Replace with actual screenshot (exam.png)</content>
+<parameter name="filePath">c:\Users\agnir\OneDrive\Desktop\Placement Oriented\AI-Based-Online-Proctoring-System\docs\images\exam.txt

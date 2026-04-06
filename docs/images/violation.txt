@@ -1,0 +1,10 @@
+# Violation Alert Screenshot
+This file should contain a screenshot showing:
+- Red warning banner or modal
+- Violation message (e.g., "Multiple faces detected")
+- Current violation score
+- Instructions to correct behavior
+- Continue or terminate options
+
+Placeholder - Replace with actual screenshot (violation.png)</content>
+<parameter name="filePath">c:\Users\agnir\OneDrive\Desktop\Placement Oriented\AI-Based-Online-Proctoring-System\docs\images\violation.txt
