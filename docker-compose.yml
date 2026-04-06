@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: proctoring-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8080
+    networks:
+      - proctoring-network
+
+  backend:
+    build: ./backend
+    container_name: proctoring-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - ai-service
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/proctoring
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - AI_SERVICE_URL=http://ai-service:5000
+    networks:
+      - proctoring-network
+
+  ai-service:
+    build: ./ai_service
+    container_name: proctoring-ai-service
+    ports:
+      - "5000:5000"
+    networks:
+      - proctoring-network
+
+  db:
+    image: postgres:15
+    container_name: proctoring-db
+    environment:
+      POSTGRES_DB: proctoring
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - proctoring-network
+
+volumes:
+  postgres_data:
+
+networks:
+  proctoring-network:
+    driver: bridge
