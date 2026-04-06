@@ -6,6 +6,7 @@ import com.proctoring.entity.Attempt;
 import com.proctoring.repository.AttemptRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,10 +22,12 @@ public class ProctoringService {
     private final ViolationEngine violationEngine;
     private final WebClient webClient;
 
-    public ProctoringService(AttemptRepository attemptRepository, ViolationEngine violationEngine, WebClient.Builder builder) {
+    public ProctoringService(AttemptRepository attemptRepository, ViolationEngine violationEngine, WebClient.Builder builder,
+                             @Value("${ai.service.url:http://ai-service:5000}") String aiServiceUrl) {
         this.attemptRepository = attemptRepository;
         this.violationEngine = violationEngine;
-        this.webClient = builder.baseUrl("http://ai-service:5000").build();
+        this.webClient = builder.baseUrl(aiServiceUrl).build();
+        logger.info("AI Service URL configured: {}", aiServiceUrl);
     }
 
     @Transactional
